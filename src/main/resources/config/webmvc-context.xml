@@ -13,6 +13,7 @@
 
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
+    <mvc:view-controller path="/" view-name="index"/>
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <bean id="viewResolver"
