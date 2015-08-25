@@ -32,25 +32,6 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                    <debug>true</debug>
-                    <optimize>true</optimize>
-                    <compilerArgs>
-                        <arg>-Xlint:all</arg>
-                        <arg>-proc:none</arg>
-                        <!--arg>-processorpath </arg-->
-                    </compilerArgs>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>true</showDeprecation>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <url>http://localhost:8080/manager</url>
-                    <port>8080</port>
-                    <path>/${project.artifactId}</path>
                 </configuration>
             </plugin>
         </plugins>
