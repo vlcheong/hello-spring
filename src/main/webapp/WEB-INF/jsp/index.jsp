@@ -27,6 +27,9 @@
             a:hover {
                 text-decoration: underline;
             }
+            .btn {
+                min-width: 160px;
+            }
         </style>
     </head>
     <body>
@@ -37,9 +40,21 @@
                         <label for="guestName">Guest Name</label>
                             <input type="text" name="guestName" id="guestName" class="form-control" placeholder="John Doe" autofocus>
                         </div>
-                        <button type="button" class="btn btn-primary" id="submit" aria-label="Left Align">
-                            <i class="glyphicon glyphicon-send"></i>
-                            <span>Submit</span>
+                        <button type="button" class="btn btn-primary" id="requestParam" aria-label="Left Align">
+                            <i class="glyphicon glyphicon-cloud"></i>&nbsp;
+                            <span>RequestParam</span>
+                        </button>
+                        <button type="button" class="btn btn-success" id="httpRequest" aria-label="Left Align">
+                            <i class="glyphicon glyphicon-send"></i>&nbsp;
+                            <span>HttpServletRequest</span>
+                        </button>
+                        <button type="button" class="btn btn-info" id="redirect" aria-label="Left Align">
+                            <i class="glyphicon glyphicon-star"></i>&nbsp;
+                            <span>Redirect</span>
+                        </button>
+                        <button type="button" class="btn btn-warning" id="pathVariable" aria-label="Left Align">
+                            <i class="glyphicon glyphicon-cog"></i>&nbsp;
+                            <span>PathVariable</span>
                         </button>
                     </div>
                 </form>
@@ -58,7 +73,7 @@
                     $('.content').empty();
                 });
 
-                $('#submit').click(function(e) {
+                $('#requestParam').click(function(e) {
                     e.preventDefault();
                     $.ajax({
                         async: true,
@@ -76,6 +91,63 @@
                         alert(errorThrown);
                     });
                 });
+
+                $('#httpRequest').click(function(e) {
+                    e.preventDefault();
+                    var name = $.trim($('#guestName').val());
+                    $.ajax({
+                        async: true,
+                        method: 'GET',
+                        url: '${context}/page',
+                        cache: false,
+                        dataType: 'html',
+                        data: {guestName: $('#guestName').val()}
+                    })
+                    .done(function(html) {
+                        $('.content').append(html);
+                    })
+                    .fail(function(xhr, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    });
+                });
+
+                $('#redirect').click(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        async: true,
+                        method: 'GET',
+                        url: '${context}/redirect',
+                        cache: false,
+                        dataType: 'json',
+                        data: {guestName: $('#guestName').val()}
+                    })
+                    .done(function(json) {
+                        var greeting = '<p>' + json.date + ' ' + json.time + ':- <b>' + json.greeting + '</b></p>';
+                        $('.content').append(greeting);
+                    })
+                    .fail(function(xhr, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    });
+                });
+
+                $('#pathVariable').click(function(e) {
+                    e.preventDefault();
+                    var name = $.trim($('#guestName').val());
+                    $.ajax({
+                        async: true,
+                        method: 'GET',
+                        url: '${context}/' + (name.length === 0 ? 'Guest' : name),
+                        cache: false,
+                        dataType: 'html'
+                    })
+                    .done(function(html) {
+                        $('.content').append(html);
+                    })
+                    .fail(function(xhr, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    });
+                });
+
             });
         </script>
     </body>

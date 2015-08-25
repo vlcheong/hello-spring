@@ -1,7 +1,9 @@
+
 package com.qrra.spring.hello.service;
 
 import com.qrra.spring.hello.model.Response;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -13,11 +15,17 @@ public class HelloService {
         "Hello",
         "Hi",
         "Hey",
-        "Ola",
+        "Olá",
         "Hallo",
         "Bonjour",
-        "Konnichiwa",
-        "AnnyeongHaseyo"
+        "こんにちは",
+        "안녕하세요",
+        "Ciao",
+        "你好",
+        "Hej",
+        "Aloha",
+        "你好冇",
+        "Xin chào"
     };
 
     private static final Random RANDOM = new Random();
@@ -27,7 +35,10 @@ public class HelloService {
     private static final int MAX = GREET.length - 1;
 
     public Response getGreeting(String guestName) {
-        String greeting = GREET[RANDOM.nextInt(MAX - MIN + 1) + MIN] + " " + guestName;
+        String greeting =
+            GREET[RANDOM.nextInt(MAX - MIN + 1) + MIN] +
+            " " +
+            StringUtils.defaultIfBlank(guestName, "Guest");
         return new Response(greeting);
     }
 }
