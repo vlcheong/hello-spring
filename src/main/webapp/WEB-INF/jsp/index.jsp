@@ -38,25 +38,24 @@
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="guestName">Guest Name</label>
-                            <input type="text" name="guestName" id="guestName" class="form-control" placeholder="John Doe" autofocus>
-                        </div>
-                        <button type="button" class="btn btn-primary" id="requestParam" aria-label="Left Align">
-                            <i class="glyphicon glyphicon-cloud"></i>&nbsp;
-                            <span>RequestParam</span>
-                        </button>
-                        <button type="button" class="btn btn-success" id="httpRequest" aria-label="Left Align">
-                            <i class="glyphicon glyphicon-send"></i>&nbsp;
-                            <span>HttpServletRequest</span>
-                        </button>
-                        <button type="button" class="btn btn-info" id="redirect" aria-label="Left Align">
-                            <i class="glyphicon glyphicon-star"></i>&nbsp;
-                            <span>Redirect</span>
-                        </button>
-                        <button type="button" class="btn btn-warning" id="pathVariable" aria-label="Left Align">
-                            <i class="glyphicon glyphicon-cog"></i>&nbsp;
-                            <span>PathVariable</span>
-                        </button>
+                        <input type="text" name="guestName" id="guestName" class="form-control" placeholder="John Doe" autofocus>
                     </div>
+                    <button type="button" class="btn btn-primary" id="requestParam">
+                        <i class="glyphicon glyphicon-cloud"></i>&nbsp;
+                        <span>RequestParam</span>
+                    </button>
+                    <button type="button" class="btn btn-success" id="httpRequest">
+                        <i class="glyphicon glyphicon-send"></i>&nbsp;
+                        <span>HttpServletRequest</span>
+                    </button>
+                    <button type="button" class="btn btn-info" id="redirect">
+                        <i class="glyphicon glyphicon-star"></i>&nbsp;
+                        <span>Redirect</span>
+                    </button>
+                    <button type="button" class="btn btn-warning" id="pathVariable">
+                        <i class="glyphicon glyphicon-cog"></i>&nbsp;
+                        <span>PathVariable</span>
+                    </button>
                 </form>
                 <h2>Greeting from server</h2>
                 <a id="clear" href="javascript:void(0);"><strong>Clear</strong></a>
@@ -94,7 +93,6 @@
 
                 $('#httpRequest').click(function(e) {
                     e.preventDefault();
-                    var name = $.trim($('#guestName').val());
                     $.ajax({
                         async: true,
                         method: 'GET',
