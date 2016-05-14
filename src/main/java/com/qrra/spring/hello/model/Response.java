@@ -1,8 +1,11 @@
 package com.qrra.spring.hello.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Response {
+public class Response implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private final String greeting;
 

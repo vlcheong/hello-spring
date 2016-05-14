@@ -12,13 +12,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.6</java.version>
-        <spring.version>4.2.0.RELEASE</spring.version>
+        <spring.version>4.2.6.RELEASE</spring.version>
         <lang3.version>3.4</lang3.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.6.1</jackson.version>
-        <slf4j.version>1.7.12</slf4j.version>
+        <jackson.version>2.7.4</jackson.version>
+        <slf4j.version>1.7.21 </slf4j.version>
         <log4j.version>1.2.17</log4j.version>
         <junit.version>4.12</junit.version>
+        <java.home>C:\Progra~1\Java\jdk1.6.0_45</java.home>
     </properties>
 
     <build>
@@ -27,11 +28,31 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.5.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <debug>true</debug>
+                    <optimize>true</optimize>
+                    <compilerArgs>
+                        <arg>-Xlint:all</arg>
+                        <arg>-proc:none</arg>
+                        <arg>-Xbootclasspath:${java.home}\jre\lib\rt.jar;${java.home}\jre\lib\jce.jar</arg>
+                    </compilerArgs>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:8080/manager</url>
+                    <server>localhost</server>
+                    <port>8080</port>
+                    <path>/${project.build.finalName}</path>
                 </configuration>
             </plugin>
         </plugins>
@@ -73,9 +94,22 @@
         </dependency>
 
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.0</version>
             <scope>provided</scope>
         </dependency>
 

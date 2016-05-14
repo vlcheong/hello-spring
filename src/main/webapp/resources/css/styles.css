@@ -1,0 +1,15 @@
+html, body {
+    margin: 10px;
+}
+*:focus {
+    outline: none !important;
+}
+a:focus {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.btn {
+    min-width: 160px;
+}

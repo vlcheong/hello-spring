@@ -5,32 +5,10 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="Cache-Control" content="no-cache"/>
-        <meta http-equiv="Pragma" content="no-cache"/>
-        <meta http-equiv="Expires" content="-1"/>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-        <title>Hello Spring</title>
-        <link rel="stylesheet" href="${resources}/bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="${resources}/bootstrap/css/bootstrap-theme.min.css"/>
-        <style>
-            html, body {
-                margin: 10px;
-            }
-            *:focus {
-                outline: none;
-            }
-            a:focus {
-                text-decoration: none;
-            }
-            a:hover {
-                text-decoration: underline;
-            }
-            .btn {
-                min-width: 160px;
-            }
-        </style>
+        <jsp:include page="meta.jsp">
+            <jsp:param name="title" value="Hello Spring"/>
+        </jsp:include>
+        <jsp:include page="css.jsp"/>
     </head>
     <body>
         <div class="container">
@@ -63,8 +41,7 @@
                 </div>
             </div>
         </div>
-        <script src="${resources}/jquery/jquery-2.1.4.min.js"></script>
-        <script src="${resources}/bootstrap/js/bootstrap.min.js"></script>
+        <jsp:include page="script.jsp"/>
         <script>
             $(document).ready(function() {
                 'use strict';
@@ -145,7 +122,6 @@
                         alert(errorThrown);
                     });
                 });
-
             });
         </script>
     </body>

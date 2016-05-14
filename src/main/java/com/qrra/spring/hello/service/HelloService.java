@@ -1,4 +1,3 @@
-
 package com.qrra.spring.hello.service;
 
 import com.qrra.spring.hello.model.Response;
@@ -8,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
-@Service
+@Service("helloService")
 public class HelloService {
 
     public static final String[] GREET = new String[] {
