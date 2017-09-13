@@ -2,10 +2,11 @@ package com.qrra.spring.hello.service;
 
 import com.qrra.spring.hello.model.Response;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
+
+import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 
 @Service("helloService")
 public class HelloService {
@@ -37,7 +38,7 @@ public class HelloService {
         String greeting =
             GREET[RANDOM.nextInt(MAX - MIN + 1) + MIN] +
             " " +
-            StringUtils.defaultIfBlank(guestName, "Guest");
+            defaultIfBlank(guestName, "Guest");
         return new Response(greeting);
     }
 }

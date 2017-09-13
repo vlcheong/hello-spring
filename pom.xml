@@ -1,22 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.qrra.spring</groupId>
     <artifactId>hello</artifactId>
     <packaging>war</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>Hello Spring</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.6</java.version>
-        <spring.version>4.2.6.RELEASE</spring.version>
-        <lang3.version>3.4</lang3.version>
+        <spring.version>4.3.11.RELEASE</spring.version>
+        <lang3.version>3.5</lang3.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.7.4</jackson.version>
-        <slf4j.version>1.7.21 </slf4j.version>
+        <jackson.version>2.7.9</jackson.version>
+        <slf4j.version>1.7.25</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
         <junit.version>4.12</junit.version>
         <java.home>C:\Progra~1\Java\jdk1.6.0_45</java.home>
@@ -28,8 +28,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.7.0</version>
                 <configuration>
+                    <executable>${java.home}\bin\javac</executable>
+                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>

@@ -29,12 +29,25 @@ public class HelloController {
         this.helloService = helloService;
     }
 
-    @RequestMapping(value = "/greeting", method = RequestMethod.POST)
+    @RequestMapping(value = "/guest-greeting", method = RequestMethod.POST)
     @ResponseBody
-    public Response greeting(
-        @RequestParam(name = "guestName", required = false, defaultValue = "Guest") String guestName) {
+    public Response greeting(@RequestParam(name = "guestName", required = false, defaultValue = "Guest") String guestName) {
         LOG.info("RequestParam - guestName: {}", guestName);
         return helloService.getGreeting(guestName);
+    }
+
+    @RequestMapping(value = "/greeting", method = RequestMethod.POST)
+    @ResponseBody
+    public Response postGreeting(Request request) {
+        LOG.info("ResponseBody - post request: {}", request);
+        return helloService.getGreeting(request.getGuestName());
+    }
+
+    @RequestMapping(value = "/greeting", method = RequestMethod.GET)
+    @ResponseBody
+    public Response getGreeting(Request request) {
+        LOG.info("ResponseBody - get request: {}", request);
+        return helloService.getGreeting(request.getGuestName());
     }
 
     @RequestMapping(value = "/{guestName}", method = RequestMethod.GET)
@@ -42,13 +55,6 @@ public class HelloController {
         LOG.info("PathVariable - guestName: {}", guestName);
         model.addAttribute("response", helloService.getGreeting(guestName));
         return "page";
-    }
-
-    @RequestMapping(value = "/greeting", method = RequestMethod.GET)
-    @ResponseBody
-    public Response greeting(Request request) {
-        LOG.info("ResponseBody - request: {}", request);
-        return helloService.getGreeting(request.getGuestName());
     }
 
     @RequestMapping(value = "/page", method = RequestMethod.GET)
